@@ -1,0 +1,198 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Basketball Training Hub";
+const pageDescription = "Elevate your game with expert basketball training tips, drills, and workouts at Hoops Central. From beginner fundamentals to advanced techniques, get the resources you need to dominate the court.";
+const features = [
+  {
+    title: "Expert-Backed Content",
+    description: "Curated by coaches and athletes who've played at the highest levels.",
+    icon: "fa-chess-board"
+  },
+  {
+    title: "Progressive Workouts",
+    description: "Start from basics and advance to elite techniques.",
+    icon: "fa-chart-line"
+  },
+  {
+    title: "Modern Tools",
+    description: "Incorporate video breakdowns, app integrations, and tracking tips.",
+    icon: "fa-laptop-code"
+  },
+  {
+    title: "Community Focus",
+    description: "Join discussions and share your progress with fellow players.",
+    icon: "fa-users"
+  }
+];
+
+const drills = [
+  {
+    title: "Footwork Fundamentals",
+    level: "Beginner",
+    duration: "15 min",
+    description: "Master the foundation of explosive movement and quick direction changes."
+  },
+  {
+    title: "Three-Point Shooting Drill",
+    level: "Intermediate",
+    duration: "20 min",
+    description: "Perfect your shooting form from various court positions."
+  },
+  {
+    title: "Defensive Slides & Recovery",
+    level: "Advanced",
+    duration: "25 min",
+    description: "Develop elite defensive positioning and recovery techniques."
+  },
+  {
+    title: "Crossover Dribbling Combo",
+    level: "Intermediate",
+    duration: "18 min",
+    description: "Execute fluid crossovers for seamless ball handling."
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <div class="relative bg-gradient-to-r from-red-600 to-orange-500 py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">
+          Training Hub: Level Up Your Basketball Game
+        </h1>
+        <p class="mt-6 text-xl text-white/90 max-w-2xl">
+          Welcome to the <span class="font-bold">Hoops Central Training Hub</span>—your go-to destination for transforming your skills on the court!
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <button class="bg-white text-red-600 font-bold px-8 py-3 rounded-full hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+            Start Training
+          </button>
+          <button class="bg-transparent border-2 border-white text-white font-bold px-8 py-3 rounded-full hover:bg-white hover:text-red-600 transition duration-300">
+            View Drills
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why Train Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Why Train with Hoops Central?</h2>
+        <div class="w-24 h-1 bg-red-600 mx-auto mt-4"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {features.map((feature, index) => (
+          <div key={index} class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2">
+            <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mb-6">
+              <i class={`fas ${feature.icon} text-2xl text-red-600`}></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+            <p class="text-gray-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Drills Section -->
+  <section class="py-20 bg-gradient-to-br from-gray-900 to-black text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold">Featured Training Drills</h2>
+        <div class="w-24 h-1 bg-orange-500 mx-auto mt-4"></div>
+        <p class="mt-6 text-gray-300 max-w-2xl mx-auto">
+          Explore our curated collection of drills designed to elevate your basketball performance, from fundamental skills to advanced techniques
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {drills.map((drill, index) => (
+          <div key={index} class="bg-gray-800 rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-105">
+            <div class="p-6">
+              <div class="flex justify-between items-start">
+                <h3 class="text-xl font-bold">{drill.title}</h3>
+                <span class={`px-3 py-1 rounded-full text-xs font-bold ${
+                  drill.level === 'Beginner' ? 'bg-green-500/20 text-green-400' : 
+                  drill.level === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400' : 
+                  'bg-red-500/20 text-red-400'
+                }`}>
+                  {drill.level}
+                </span>
+              </div>
+              <p class="mt-3 text-gray-400">{drill.description}</p>
+              <div class="mt-6 flex justify-between items-center">
+                <span class="text-sm text-gray-500 flex items-center">
+                  <i class="far fa-clock mr-2"></i> {drill.duration}
+                </span>
+                <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                  Start
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="p-6">
+          <div class="text-4xl font-bold text-red-600">10K+</div>
+          <div class="mt-2 text-gray-600">Active Players</div>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-bold text-red-600">250+</div>
+          <div class="mt-2 text-gray-600">Training Drills</div>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-bold text-red-600">98%</div>
+          <div class="mt-2 text-gray-600">Success Rate</div>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-bold text-red-600">24/7</div>
+          <div class="mt-2 text-gray-600">Support Available</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-orange-500 to-red-600">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white">Ready to Dominate the Court?</h2>
+      <p class="mt-6 text-xl text-white/90 max-w-2xl mx-auto">
+        Join thousands of players improving their game with our proven training programs
+      </p>
+      <div class="mt-10">
+        <button class="bg-white text-red-600 font-bold px-10 py-4 rounded-full text-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105 shadow-lg">
+          Get Started Today
+        </button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+  
+  .hero-pattern {
+    background-image: 
+      radial-gradient(#dc2626 1px, transparent 1px),
+      radial-gradient(#dc2626 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+</style>

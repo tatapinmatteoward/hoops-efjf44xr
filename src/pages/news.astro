@@ -1,0 +1,228 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Latest Basketball News | Hoops Central";
+const pageDescription = "Stay updated with the hottest basketball news, breaking stories, player trades, game highlights, and expert analysis from Hoops Central – your go-to source for all things hoops!";
+const featuredStory = {
+  title: "NBA Finals Fever Heats Up!",
+  content: "The NBA playoffs are in full swing, and the stakes couldn't be higher! **LeBron James** just dropped a triple-double masterpiece in Game 3, leading the Lakers to a thrilling comeback victory over the Warriors. With the series tied 2-1, analysts are predicting an epic showdown. *Will the King claim another ring?* Stay tuned for live reactions and breakdowns.",
+  highlights: [
+    { label: "LeBron's Stats", value: "35 points, 12 rebounds, 11 assists" },
+    { label: "Game Score", value: "108.5" },
+    { label: "Clutch FG%", value: "62.5%" }
+  ]
+};
+const articles = [
+  {
+    id: 1,
+    title: "Top 5 Trade Rumors This Week",
+    excerpt: "The offseason is heating up with major deals on the horizon...",
+    category: "Trade Rumors",
+    time: "2 hours ago"
+  },
+  {
+    id: 2,
+    title: "College Basketball Preview",
+    excerpt: "How the season stacks up across all conference battles...",
+    category: "College",
+    time: "5 hours ago"
+  },
+  {
+    id: 3,
+    title: "International Highlights",
+    excerpt: "EuroLeague dominance continues with new records set...",
+    category: "International",
+    time: "1 day ago"
+  },
+  {
+    id: 4,
+    title: "Training Tips for Beginners",
+    excerpt: "Master the fundamentals with our expert coaching guide...",
+    category: "Training",
+    time: "1 day ago"
+  },
+  {
+    id: 5,
+    title: "Player Rankings Update",
+    excerpt: "Top 100 players re-ranked after playoff performance...",
+    category: "Rankings",
+    time: "1 day ago"
+  },
+  {
+    id: 6,
+    title: "Injury Reports: Who's Out?",
+    excerpt: "Latest updates on key players sidelined for the season...",
+    category: "Injuries",
+    time: "2 days ago"
+  }
+];
+const breakingNews = [
+  "LeBron scores 35 points in clutch Game 3 win",
+  "Warriors trade veteran for draft pick",
+  "New champion emerges in European League",
+  "Fantasy team rankings released"
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  {/* Hero Section */}
+  <section class="relative bg-gradient-to-r from-red-700 via-red-600 to-orange-500 py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-20"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl">
+        <span class="inline-block px-4 py-1 bg-white text-red-700 font-bold rounded-full text-sm mb-4">BREAKING NEWS</span>
+        <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+          Latest Basketball <span class="text-yellow-400">News</span>
+        </h1>
+        <p class="text-xl text-white/90 mb-8 max-w-2xl">
+          Stay updated with the hottest basketball news, breaking stories, player trades, game highlights, and expert analysis
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <button class="px-8 py-3 bg-white text-red-700 font-bold rounded-lg shadow-lg hover:bg-gray-100 transition-all transform hover:-translate-y-1">
+            Live Updates
+          </button>
+          <button class="px-8 py-3 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-red-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+  </section>
+
+  {/* Breaking News Bar */}
+  <section class="bg-black py-4">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center">
+        <span class="text-red-500 font-bold mr-4 flex items-center">
+          <i class="fas fa-bolt mr-2"></i> BREAKING
+        </span>
+        <div class="flex-1 overflow-hidden whitespace-nowrap">
+          <div class="animate-marquee inline-block pr-4">
+            {breakingNews.map((news, index) => (
+              <span key={index} class="mx-4 text-white">
+                {news}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Featured Story */}
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-start mb-12">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Breaking Basketball News</h2>
+          <p class="text-gray-600 max-w-2xl">
+            Welcome to the pulse of the court! At <strong class="text-red-600">Hoops Central</strong>, we're your ultimate destination for the latest NBA updates, college basketball buzz, and international hoop action.
+          </p>
+        </div>
+        <div class="hidden md:block">
+          <i class="fas fa-basketball-ball text-5xl text-red-600"></i>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-xl overflow-hidden mb-16">
+        <div class="md:flex">
+          <div class="md:w-2/3 p-8">
+            <span class="inline-block px-3 py-1 bg-red-100 text-red-700 font-bold rounded-full text-sm mb-4">FEATURED STORY</span>
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">{featuredStory.title}</h3>
+            <p class="text-gray-700 mb-8 leading-relaxed">
+              {featuredStory.content}
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {featuredStory.highlights.map((highlight, index) => (
+                <div key={index} class="bg-gradient-to-br from-gray-50 to-gray-100 p-4 rounded-lg border-l-4 border-red-500">
+                  <h4 class="font-bold text-gray-900">{highlight.label}</h4>
+                  <p class="text-lg font-bold text-red-600">{highlight.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="md:w-1/3 bg-gradient-to-br from-red-600 to-orange-500 p-8 flex items-center justify-center">
+            <div class="text-center">
+              <i class="fas fa-trophy text-6xl text-yellow-400 mb-4"></i>
+              <h4 class="text-xl font-bold text-white mb-2">NBA PLAYOFFS</h4>
+              <p class="text-white/90">Live Coverage & Analysis</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Latest News Grid */}
+      <h3 class="text-2xl font-bold text-gray-900 mb-8">Latest News</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.map((article) => (
+          <article key={article.id} class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="h-48 bg-gradient-to-r from-red-500 to-orange-400 relative">
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-white text-red-600 font-bold rounded-full text-xs">
+                  {article.category}
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-3">
+                <h4 class="text-xl font-bold text-gray-900">{article.title}</h4>
+                <span class="text-sm text-gray-500">{article.time}</span>
+              </div>
+              <p class="text-gray-600 mb-4">{article.excerpt}</p>
+              <a href="#" class="text-red-600 font-bold flex items-center">
+                Read more
+                <i class="fas fa-arrow-right ml-2 text-sm"></i>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* Newsletter CTA */}
+      <div class="mt-16 bg-gradient-to-r from-red-600 to-red-800 rounded-2xl p-8 md:p-12 text-center">
+        <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Stay Ahead of the Game</h3>
+        <p class="text-red-100 mb-6 max-w-2xl mx-auto">
+          Join thousands of basketball fans getting exclusive updates, insider analysis, and training tips delivered straight to their inbox.
+        </p>
+        <div class="max-w-md mx-auto flex">
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            class="flex-1 px-4 py-3 rounded-l-lg focus:outline-none text-gray-900"
+          />
+          <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3 rounded-r-lg transition-colors">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  @keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+  
+  .animate-blob {
+    animation: blob 15s infinite;
+  }
+  
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+</style>
